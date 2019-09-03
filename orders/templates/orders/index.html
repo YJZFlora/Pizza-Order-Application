@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="static/orders/styles.css"/>
+  <script src="static/orders/javascript.js"> </script>
+
+</head>
+
+<body>
+  <div class="all">
+    <h1 id="title">Flora <span id="PIZZA">Pizza</span> <span id="HOUSE">House</span></h1>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a id = "login" class="nav-link active">Login</a>
+        </li>
+        <li class="nav-item">
+          <a id = "register" class="nav-link">Register</a>
+        </li>
+        <li class="nav-item">
+          <form class="" action="{% url 'logout' %}" method="post">{% csrf_token %}
+            <a  class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </form>
+        </li>
+        <li class="nav-item">
+          <form class="" action="{% url 'history' %}" method="post">{% csrf_token %}
+            <a class="nav-link" id="order_history" href="{% url 'history' %}">Order History</a>
+          </form>
+        </li>
+    </ul>
+
+    <div class="row">
+      <div class="col-sm-9">
+      <h2>Pizza<span id="ICONS"> H</span> </h2>
+        <div class="row">
+        {% for small in smalls %}
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body" id="basic_price" data-price="{{ small.Price }}" data-basic="{{ small.Basic }}">
+                <h5 class="card-title" >{{ small.Basic }} </h5>
+                <p class="card-text" >${{ small.Price }}+</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+        <h2>Beverages<span id="ICONS"> W</span> </h2>
+        <div class="row">
+        {% for Beverage in Beverages %}
+        <div class="col-sm-3">
+          <div class="card" id="direct" data-thing="{{Beverage.Beverage}}" data-price="{{Beverage.Price}}">
+            <div class="card-body">
+              <h5 class="card-title">{{ Beverage.Beverage }}</h5>
+              <p class="card-text">$ {{ Beverage.Price }}</p>
+            </div>
+          </div>
+          </div>
+        {% endfor %}
+      </div>
+
+        <h2>Salads<span id="ICONS"> N</span></h2>
+        <div class="row">
+        {% for Salad in Salads %}
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body" id="salad_price" data-price="{{ Salad.Price }}" data-salad="{{ Salad.Salad }}">
+              <h5 class="card-title">{{ Salad.Salad }}</h5>
+              <p class="card-text">$ {{ Salad.Price }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+        <h2>Subs<span id="ICONS"> g</span></h2>
+        <div class="row">
+          {% for Sub in Subs %}
+          <div class="col-sm-3">
+          <div class="card" id="direct" data-thing="{{Sub.Sub}}" data-price="{{ Sub.Price }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ Sub.Sub }}</h5>
+              <p class="card-text">$ {{ Sub.Price }}</p>
+            </div>
+          </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <h2>Pastas<span id="ICONS"> L</span></h2>
+        <div class="row">
+          {% for Pasta in Pastas %}
+          <div class="col-sm-3">
+            <div class="card" id="direct" data-thing="{{Pasta.Pasta }}" data-price="{{ Pasta.Price }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ Pasta.Pasta }}</h5>
+                <p class="card-text">$ {{ Pasta.Price }}</p>
+              </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="login_info">
+          <li>Currently logged in as: {{ user.username }}</li>
+        </div>
+
+        <h2>My order</h2>
+          <div id="order_place"></div>
+          <p id="total_amount">Total price: 0</p>
+          <button  name="button" id="confirm_button">Check out</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="basic_modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Item Options</h3>
+      <form method="post">
+        <h4>Choose a size</h4>
+        <p>Required - Choose one.</p>
+        <input type="radio" name="size" value="big"> Big(15 Slice) <span id="big"></span><br>
+        <input type="radio" name="size" value="small"> Small (9 Slice) <span id="small"></span><br>
+        <h4>Would you like whole toppings?</h4>
+        <p>Optional - Choose any.</p>
+          {% for Topping in Toppings %}
+        <input type="checkbox" class="add_thing" name="toppings" value="{{ Topping.Topping }} ${{ Topping.Price }}"> {{ Topping.Topping }} ${{ Topping.Price }}<br>
+        {% endfor %}
+        <h4>Special Instructions</h4>
+        <input type="text" class="note" placeholder="No pickles? Dressing on the side? Let the restaurant know here">
+        <br>
+        <input type="number" id="pizza" min="1" value="1">
+        <button type="button" name="button" class="order_btn">Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="salad_modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="salad"></h2>
+      <h2 id="s_price"></h2>
+      <h3>Item Options</h3>
+      <form method="post">
+        <h4>Would you like extras?</h4>
+        <p>Optional - Choose any.</p>
+        {% for Adding in Addings %}
+        <input type="checkbox" class="add_thing" name="Salad_adding" value="{{ Adding.Adding }} ${{ Adding.Price }}"> {{ Adding.Adding }} ${{ Adding.Price }}<br>
+        {% endfor %}
+        <h4>Special Instructions</h4>
+        <input type="text" class="note" placeholder="No pickles? Dressing on the side? Let the restaurant know here">
+        <p></p>
+        <input type="number" id="salad_amount" value="1" min="1">
+        <button type="button" name="button" class="order_btn">Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="authenticate" class="modal">
+
+    <form class="modal-content animate" action="{% url 'login' %}" method="post">{% csrf_token %}
+      <div class="imgcontainer">
+        <span  class="close" >&times;</span>
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+  <div id="authenticate" class="modal">
+
+    <form class="modal-content animate" action="{% url 'register' %}" method="post">{% csrf_token %}
+      <div class="imgcontainer">
+        <span class="close" >&times;</span>
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <label for="psw"><b>Password Again</b></label>
+        <input type="password" placeholder="Enter Password Again" name="password_again" required>
+        <span id="confirm_message" style="display:none">Please confirm your password</span>
+        <button type="submit">Register</button>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+  <div id="confirm_modal" class="modal">
+    <form class="modal-content animate" name="order" action="{% url 'checkout' %}" method="post">{% csrf_token %}
+      <div class="imgcontainer">
+        <span class="close" >&times;</span>
+      </div>
+      <div class="container">
+      <div id="confirm_place"></div>
+      <p id="total_amount_confirm"></p>
+      <button type="submit" name="button" id="check">Check out</button>
+      <input type="text" id="order_all" value="" name= "order_all" style="display:none">
+      <input type="text" id="bill" value="" name= "bill" style="display:none">
+      <div class="container">
+    </form>
+  </div>
+</body>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+ <script>
+ setTimeout(function() {
+   window.location.href = "{% url 'index' %}";
+ }, 5000);
+ </script>
+</head>
+
+<body>
+  <div class="">
+    <h2>Register successfully, now you can login and order. </h2>
+    <p>This page will return to Menu in 10 seconds.</p>
+    <a href="{% url 'index' %}">Go to menu now</a>
+  </div>
+
+</body>

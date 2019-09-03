@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<body>
+  {% for order in orders %}
+    <div class="col-sm-3">
+      <div class="card">
+          <h2 class="card-title" >You order: </h2>
+          <h4>{{ order.order }}</h4>
+          <h2 class="card-text" >This order cost: </h2>
+          <h4>${{ order.bill }}</h4>
+          <h2>The order is {{ order.finished }}</h2>
+        </div>
+      </div>
+  {% endfor %}
+  <a href="{% url 'index' %}">Back to menu.</a>
+
+</body>

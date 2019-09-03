@@ -1,0 +1,10 @@
+<div class="col-sm-3">
+  <h2>My order</h2>
+  <form  method="post" action=action="{% url 'order' user.id %}" name="order">
+    <div id="order_place"></div>
+      <p id="total_amount">Total price: 0</p>
+      <button type="submit" name="button">Confirm</button>
+  </form>
+    </div>
+
+      <li><a href="{% url 'logout' %}">Logout</a></li>
