@@ -32,14 +32,14 @@
   ```from orders.models import <table name>```
 
   * fetch cartain rows from table
-  ```f = <table name>(<attribute>=<value>, <attribute>=<value>)```
-  ```Basics.objects.filter(Size="small")```
+  ```f = <table name>(<attribute>=<value>, <attribute>=<value>)``` OR
+  ```Basics.objects.filter(Size="small")``` OR
   ```one = Basics.objects.get(id=3)```
 
   * delete certain rows
   ```one.delete()```
 
-  * save changes in the table
+  * save changes to the table
   ```f.save()```
 
   * fetch all rows of the table
