@@ -14,8 +14,36 @@
 ![Image of architecture](https://github.com/YJZFlora/Pizza-order-and-delivery-website/blob/master/Architecture.png)
 
 ## How to run in local
+* Run app:
 ```python3 manage.py runserver```
 
+* Make changes of the app:
+```python manage.py makemigrations```
+
+```python [manage.py](http://manage.py/) migrate```
+
+* Admin user can open admin site here:
+(http://127.0.0.1:8000/admin)
+
+* OR Admin user can open manage shell for database management:
+  ```python manage.py shell```
+
+  * open table of the database
+  ```from orders.models import <table name>```
+
+  * fetch cartain rows from table
+  ```f = <table name>(<attribute>=<value>, <attribute>=<value>)```
+  ```Basics.objects.filter(Size="small")```
+  ```one = Basics.objects.get(id=3)```
+
+  * delete certain rows
+  ```one.delete()```
+
+  * save changes in the table
+  ```f.save()```
+
+  * fetch all rows of the table
+  ```Basics.objects.all()```
 
 ## Future work
 
