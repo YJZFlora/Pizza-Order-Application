@@ -11,7 +11,7 @@
 
 ## How to achieve
 
-![Image of architecture](https://github.com/YJZFlora/AWS-Web-API/blob/master/Architecture.png)
+![Image of architecture](https://github.com/YJZFlora/Pizza-order-and-delivery-website/blob/master/Architecture.png)
 
 ## How to run in local
 ```python3 manage.py runserver```
