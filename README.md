@@ -1,6 +1,6 @@
 # Pizza-order-and-delivery-website
 
-## [Click to try](https://florapizzahouse.herokuapp.com/)
+## [Click to try!](https://florapizzahouse.herokuapp.com/)
 
 ## Functions achieve
 
@@ -51,6 +51,8 @@
 
 * Further optimize the layout and design.
 
+* demo
+
 ## Demo
 
 ## References
@@ -58,3 +60,5 @@
 https://docs.cs50.net/web/2020/x/projects/3/project3.html
 
 https://www.youtube.com/watch?v=6DI_7Zja8Zc
+
+https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
