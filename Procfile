@@ -1,1 +1,1 @@
-web: gunicorn orders.wsgi
+web: gunicorn pizza.wsgi
