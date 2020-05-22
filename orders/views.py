@@ -10,6 +10,8 @@ from .models import *
 
 # Create your views here.
 def index(request):
+    testlist = []
+    testlist.append("tttttt");
     context = {
         "Basics": Basics.objects.all(),
         "Beverages": Beverages.objects.all(),
@@ -17,7 +19,8 @@ def index(request):
         "Subs": Subs.objects.all(),
         "Pastas": Pastas.objects.all(),
         "Toppings": Toppings.objects.all(),
-        "smalls": Basics.objects.filter(Size="small"),
+        #"smalls": Basics.objects.filter(Size="small"),
+        "smalls":testlist,
         "bigs": Basics.objects.filter(Size="big"),
         "Addings":Salad_adding.objects.all()
     }

@@ -54,7 +54,7 @@ ROOT_URLCONF = 'pizza.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "orders","templates","orders")],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,13 +67,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
-path = os.path.join(BASE_DIR, "orders","templates","orders")
-print("\n\n\n\n\n\nHERE'S THE PATH: "+str(path))
-
-
-
 
 WSGI_APPLICATION = 'pizza.wsgi.application'
 
