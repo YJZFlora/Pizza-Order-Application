@@ -1,6 +1,6 @@
 # Pizza-order-and-delivery-website
 
-## [Click to try!](https://florapizzahouse.herokuapp.com/)
+## [Click to try!](https://flora-pizza.herokuapp.com/)
 
 ## Functions achieve
 
