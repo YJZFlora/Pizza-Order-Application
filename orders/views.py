@@ -24,6 +24,7 @@ def index(request):
         "bigs": Basics.objects.filter(Size="big"),
         "Addings":Salad_adding.objects.all()
     }
+    print(Basics.objects.all())
     return render(request, "orders/index.html", context)
 
 
