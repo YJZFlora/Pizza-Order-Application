@@ -18,7 +18,6 @@ def index(request):
         "Pastas": Pastas.objects.all(),
         "Toppings": Toppings.objects.all(),
         "smalls": Basics.objects.filter(Size="small"),
-        "smalls":testlist,
         "bigs": Basics.objects.filter(Size="big"),
         "Addings":Salad_adding.objects.all()
     }
