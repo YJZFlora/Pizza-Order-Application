@@ -28,7 +28,10 @@
 (http://127.0.0.1:8000/admin)
 
 * OR Admin user can open manage shell for database management:
-  ```python manage.py shell```
+ ```python3 manage.py createsuperuser```
+ You will be prompted to enter a username, email address, and strong password.
+
+  ```python3 manage.py shell```
 
   * open table of the database
   ```from orders.models import <table name>```
@@ -49,9 +52,9 @@
 
 ## Future work
 
-* Further optimize the layout and design.
-
-* demo
+* Optimize the front-end UI design. 
+* Use React to refactor the code of JavaScript.
+* Add dynamic functions. 
 
 ## Demo
 
