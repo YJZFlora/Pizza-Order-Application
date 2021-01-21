@@ -28,6 +28,7 @@
 (http://127.0.0.1:8000/admin)
 
 * OR Admin user can open manage shell for database management:
+
  ```python3 manage.py createsuperuser```
  You will be prompted to enter a username, email address, and strong password.
 
