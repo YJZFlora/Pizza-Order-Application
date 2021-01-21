@@ -56,8 +56,6 @@
 * Use React to refactor the code of JavaScript.
 * Add dynamic functions. 
 
-## Demo
-
 ## References
 
 https://docs.cs50.net/web/2020/x/projects/3/project3.html
